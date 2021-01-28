@@ -1,19 +1,24 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 func main() {
-	var rupee float64
-	fmt.Print("Enter amount in LKR : ")
-	fmt.Scan(&rupee)
-	fmt.Println(rupee)
-	if rupee!=0{
-		fmt.Println("Your amount in USD : ", rupee*0.0051)
-	}else  {
-		fmt.Println("Please Enter a Valid Amount")
+	var s string
+	var i float64
+	fmt.Print("Enter Amount in LKR : ")
+	for {
+		_, err := fmt.Scan(&s)
+		i, err = strconv.ParseFloat(s, 64)
+		if err != nil {
+			fmt.Println("Enter a valid Amount")
+		} else {
+			usd := fmt.Sprintf("%.2f", i*0.0052)
+			fmt.Println("Your amount in USD : ", usd)
+			break
+		}
 	}
-
-
-
 
 }
